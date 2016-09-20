@@ -1,0 +1,10 @@
+include README.rst
+include CHANGELOG.rst
+include requirements.txt
+
+recursive-exclude tests *
+recursive-exclude * *.py[co]
+recursive-exclude * __pycache__
+
+recursive-include docs *.rst *.py Makefile make.bat
+recursive-exclude docs/_build *
