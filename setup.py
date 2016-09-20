@@ -46,7 +46,7 @@ setup(
 
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
     ],
-    license='© ComSource 2016',
+    license='LGPLv3',
 
     packages=find_packages('src'),
     package_dir={'': 'src'},
