@@ -28,11 +28,11 @@ def get_version(data):
 
 
 setup(
-    name='',
+    name='lxc_ssh_controller',
     version=get_version(changelog),
-    description="",
+    description="Simple wrapper over LXC via SSH (paramiko).",
     long_description=long_description,
-    # url='',  # TODO: !
+    url='https://github.com/FlowsGuard/lxc_ssh_controller',
 
     author='ComSource',
     author_email='bystrousak@kitakitsune.org',
@@ -44,13 +44,12 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
 
-        "License :: Other/Proprietary License",
+        "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
     ],
     license='© ComSource 2016',
 
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    # namespace_packages=['',],
 
     zip_safe=False,
     include_package_data=True,
