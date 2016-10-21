@@ -2,7 +2,7 @@
 import json
 import time
 
-from ssh import SSH
+from .ssh import SSH
 
 
 class ContainerException(Exception):
