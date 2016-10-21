@@ -45,7 +45,7 @@ class ContainerController:
 
         return ips
 
-    def get_ip(self, container_name):
+    def get_ip(self, container_name, wait=5):
         def get_ip():
             data = self.ssh.execute(
                 "lxc list %s --format json" % container_name
@@ -57,7 +57,7 @@ class ContainerController:
             )
 
         # circuit breaker - it takes some time to get the IP from DHCP
-        for i in range(5):
+        for _ in range(wait):
             ip = get_ip()
 
             if ip:
