@@ -37,13 +37,13 @@ def circuit_breaker(fn=None, retry=5):
 
 
 class SSH:
-    def __init__(self, address):
+    def __init__(self, address, retry=5):
         self.address = address
-        self.ssh = self.__class__.ssh_to_server(address)
+        self.ssh = self.__class__.ssh_to_server(address, retry)
         self._last_stderr = ""
 
     @staticmethod
-    def ssh_to_server(address):
+    def ssh_to_server(address, retry):
         key_path = os.path.expanduser("~/.ssh/id_rsa")
         key = paramiko.RSAKey.from_private_key_file(key_path)
 
@@ -51,7 +51,7 @@ class SSH:
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.load_system_host_keys()
 
-        @circuit_breaker
+        @circuit_breaker(retry=retry)
         def connect():
             ssh.connect(
                 hostname=address,
